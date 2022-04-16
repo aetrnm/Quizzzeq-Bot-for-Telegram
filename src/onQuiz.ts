@@ -8,17 +8,19 @@ onQuiz.command("quiz", async (ctx) => {
         "https://opentdb.com/api.php?amount=1&type=multiple"
     );
     const body = await response.text();
-    const data = JSON.parse(body);
+    const data = JSON.parse(body).results[0];
 
-    const q = data.results[0];
-    console.log(q);
-    const ans = decodeAnswers([q.correct_answer, ...q.incorrect_answers]);
+    const answers = decodeAnswers([
+        data.correct_answer,
+        ...data.incorrect_answers,
+    ]);
+    const question = decodeHTMLEntities(data.question);
 
-    ctx.replyWithPoll(decodeHTMLEntities(q.question), ans, {
-        is_anonymous: false,
-        open_period: 14,
-        correct_option_id: 0,
+    const quiz = ctx.replyWithPoll(question, answers, {
         type: "quiz",
+        is_anonymous: false,
+        open_period: 15,
+        correct_option_id: 0,
     });
 });
 
