@@ -16,7 +16,9 @@ onQuiz.command("quiz", async (ctx) => {
 
     ctx.replyWithPoll(decodeHTMLEntities(q.question), ans, {
         is_anonymous: false,
-        open_period: 20,
+        open_period: 14,
+        correct_option_id: 0,
+        type: "quiz",
     });
 });
 
