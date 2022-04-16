@@ -1,0 +1,19 @@
+{
+    "name": "quizzzeq",
+    "version": "1.0.0",
+    "description": "Bot for quizes in Telegram",
+    "scripts": {
+        "build": "tsc",
+        "start": "node .\\build\\bot.js"
+    },
+    "type": "module",
+    "author": "Hnatkovskyi Oleh",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^16.0.0",
+        "grammy": "^1.7.3"
+    },
+    "devDependencies": {
+        "@types/node": "^17.0.24"
+    }
+}
